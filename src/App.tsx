@@ -1,0 +1,397 @@
+import React, { useState, useEffect } from 'react';
+import { Phone, MessageSquare, Zap, Brain, Mic, ArrowRight, Check, User, PhoneCall } from 'lucide-react';
+
+const prompts = [
+  "Tell my landlord I'll pay rent on Friday",
+  "Remind my client about our 3pm call",
+  "Call mom and ask if she wants to visit next weekend",
+  "Tell my boss I'm stuck in traffic, running 10 late",
+  "Confirm the reservation for tonight, party of 5"
+];
+
+function TypingAnimation() {
+  const [currentPrompt, setCurrentPrompt] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    const prompt = prompts[currentPrompt];
+    
+    if (isTyping) {
+      if (currentText.length < prompt.length) {
+        const timer = setTimeout(() => {
+          setCurrentText(prompt.slice(0, currentText.length + 1));
+        }, 80);
+        return () => clearTimeout(timer);
+      } else {
+        const timer = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      if (currentText.length > 0) {
+        const timer = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, 30);
+        return () => clearTimeout(timer);
+      } else {
+        setCurrentPrompt((prev) => (prev + 1) % prompts.length);
+        setIsTyping(true);
+      }
+    }
+  }, [currentText, currentPrompt, isTyping]);
+
+  return (
+    <div className="relative">
+      <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 max-w-2xl mx-auto">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <div className="text-gray-700 text-lg font-medium min-h-[28px]">
+          {currentText}
+          <span className="animate-pulse">|</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PhonePreview() {
+  return (
+    <div className="relative max-w-sm mx-auto">
+      {/* Phone Frame */}
+      <div className="bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
+        <div className="bg-black rounded-[2.5rem] p-1">
+          <div className="bg-white rounded-[2rem] overflow-hidden">
+            {/* Status Bar */}
+            <div className="bg-gray-50 px-6 py-2 flex justify-between items-center text-sm font-medium">
+              <span>9:41</span>
+              <div className="flex items-center space-x-1">
+                <div className="w-4 h-2 bg-gray-300 rounded-sm"></div>
+                <div className="w-6 h-3 bg-gray-300 rounded-sm"></div>
+                <div className="w-6 h-3 bg-green-500 rounded-sm"></div>
+              </div>
+            </div>
+            
+            {/* Call Interface */}
+            <div className="bg-gradient-to-b from-indigo-500 to-indigo-600 text-white p-8 text-center min-h-[500px] flex flex-col justify-between">
+              <div>
+                <div className="text-sm opacity-80 mb-2">Calling...</div>
+                <div className="w-24 h-24 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <User className="w-12 h-12 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-1">Mom</h3>
+                <p className="text-sm opacity-80">mobile</p>
+              </div>
+              
+              <div className="flex justify-center space-x-8">
+                <button className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center">
+                  <PhoneCall className="w-8 h-8 text-white transform rotate-135" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TranscriptPreview() {
+  return (
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 max-w-md mx-auto">
+      <div className="flex items-center space-x-3 mb-4">
+        <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-green-500 rounded-full flex items-center justify-center">
+          <MessageSquare className="w-5 h-5 text-white" />
+        </div>
+        <div>
+          <h4 className="font-semibold text-gray-900">Call Summary</h4>
+          <p className="text-sm text-gray-500">2 minutes ago</p>
+        </div>
+      </div>
+      
+      <div className="space-y-3 text-sm">
+        <div className="bg-gray-50 rounded-lg p-3">
+          <p className="font-medium text-gray-900 mb-1">HeyWay:</p>
+          <p className="text-gray-700">"Hi Mom, it's me. I wanted to ask if you'd like to visit next weekend?"</p>
+        </div>
+        
+        <div className="bg-green-50 rounded-lg p-3">
+          <p className="font-medium text-gray-900 mb-1">Mom:</p>
+          <p className="text-gray-700">"Oh that sounds wonderful! Yes, I'd love to come visit. What time works for you?"</p>
+        </div>
+        
+        <div className="bg-gray-50 rounded-lg p-3">
+          <p className="font-medium text-gray-900 mb-1">HeyWay:</p>
+          <p className="text-gray-700">"How about Saturday afternoon around 2 PM?"</p>
+        </div>
+      </div>
+      
+      <div className="mt-4 pt-4 border-t border-gray-200">
+        <div className="flex items-center space-x-2 text-green-600">
+          <Check className="w-4 h-4" />
+          <span className="text-sm font-medium">Visit confirmed for Saturday 2 PM</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubmitted(true);
+      // Here you would typically send the email to your backend
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setEmail('');
+      }, 3000);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-green-50">
+      {/* Navigation */}
+      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center space-x-2">
+              <Phone className="h-8 w-8 text-green-600" />
+              <span className="text-2xl font-bold text-gray-900">HeyWay</span>
+            </div>
+            <button className="hidden sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors">
+              Get Early Access
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-20 pb-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+            Let HeyWay call for you —{' '}
+            <span className="bg-gradient-to-r from-indigo-600 to-green-500 bg-clip-text text-transparent">
+              Just type a prompt.
+            </span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Your AI assistant that makes phone calls on your behalf using advanced AI. 
+            Recipients think it's you calling from your own number.
+          </p>
+          
+          <div className="mb-16">
+            <TypingAnimation />
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-green-600 hover:bg-green-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+              Get Early Access
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </button>
+            <button className="inline-flex items-center px-8 py-4 border border-gray-300 text-lg font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+              Watch Demo
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Phone UI Preview Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">See HeyWay in action</h2>
+            <p className="text-xl text-gray-600">From prompt to call to transcript — all seamlessly handled</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <PhonePreview />
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Making the call</h3>
+                <p className="text-gray-600">HeyWay calls from your number, so recipients see your name and trust the call</p>
+              </div>
+            </div>
+            
+            <div className="space-y-8">
+              <TranscriptPreview />
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Get the results</h3>
+                <p className="text-gray-600">Receive a complete transcript with key outcomes and next steps highlighted</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">How it works</h2>
+            <p className="text-xl text-gray-600">Three simple steps to let AI handle your calls</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+                <MessageSquare className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">1. Type a prompt</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Simply describe what you need to communicate. Our AI understands natural language and context.
+              </p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+                <Phone className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">2. We make the call</h3>
+              <p className="text-gray-600 leading-relaxed">
+                HeyWay calls from your number, so the recipient sees your name and trusts the call.
+              </p>
+            </div>
+            
+            <div className="text-center group">
+              <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-200">
+                <Zap className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">3. Get the transcript</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Receive a complete transcript of the conversation and any important information or next steps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why It Feels Human */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-indigo-50 to-green-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why it feels human</h2>
+            <p className="text-xl text-gray-600">Powered by cutting-edge AI technology</p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                  <Brain className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3">GPT-4.1 Intelligence</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Our AI understands context, nuance, and can handle complex conversations naturally. 
+                    It adapts to different situations and responds appropriately to unexpected questions.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                  <Mic className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-3">ElevenLabs Voice</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    Ultra-realistic voice synthesis that sounds natural and human. Recipients won't know 
+                    they're talking to AI - it sounds just like a real person making the call.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700">Natural conversation flow</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700">Handles interruptions gracefully</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700">Remembers conversation context</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <Check className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-gray-700">Adapts tone to situation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Email Signup */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Get early access</h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Join the waitlist to be among the first to experience HeyWay when we launch.
+          </p>
+          
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                required
+              />
+              <button
+                type="submit"
+                disabled={isSubmitted}
+                className="px-8 py-4 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitted ? 'Thanks!' : 'Join Waitlist'}
+              </button>
+            </div>
+          </form>
+          
+          <p className="text-sm text-gray-500 mt-6">
+            No spam, ever. We'll only email you about HeyWay updates.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-2 mb-4 md:mb-0">
+              <Phone className="h-8 w-8 text-green-400" />
+              <span className="text-2xl font-bold">HeyWay</span>
+            </div>
+            <div className="text-gray-400 text-sm">
+              © 2025 HeyWay. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
