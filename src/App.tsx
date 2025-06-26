@@ -16,19 +16,19 @@ const heroTexts = [
 
 const features = [
   {
-    title: "Write a prompt, we handle the call",
-    description: "Just type what you need to say and we'll make the call for you",
+    title: "Pick your voice",
+    description: "Choose from 23 human-like voices, each with its own personality",
     screenshot: "/screenshots/voice.png"
   },
   {
-    title: "Call from your number, sound like you",
-    description: "Uses your real caller ID with AI voices that match your style",
-    screenshot: "/screenshots/biz.png"
+    title: "Calls sent as your number",
+    description: "All calls go out from your actual number—so when someone gets a call, they see you calling",
+    screenshot: "/screenshots/dash.jpg"
   },
   {
-    title: "Get transcriptions and responses instantly",
-    description: "Complete call summaries delivered right after each conversation",
-    screenshot: "/screenshots/dash.jpg"
+    title: "Search businesses",
+    description: "Find and call any business anywhere with instant search and connect",
+    screenshot: "/screenshots/biz.png"
   }
 ];
 
