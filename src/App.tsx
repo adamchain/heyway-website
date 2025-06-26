@@ -2,9 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Phone, MessageSquare, Zap, Brain, Mic, ArrowRight, Check, User, PhoneCall, Volume2, Search, MapPin, Star, Download, Clock, FileText } from 'lucide-react';
 
 const heroTexts = [
-  "Let HeyWay call for you.",
-  "AI calls that sound like you.",
-  "Send a call with just a prompt."
+  "Call mom back to ask about dinner plans",
+  "Make a vet appointment for my dog",
+  "Call the unknown number that just rang me",
+  "Cancel my appointment at the hair salon",
+  "See if the pharmacy has my prescription ready",
+  "Ask the restaurant if they're open or taking reservations",
+  "Call the landlord about the leak",
+  "Check if my food order is ready for pickup",
+  "Reschedule my dentist appointment",
+  "Ask the recruiter for an update on my interview"
 ];
 
 const features = [
@@ -35,18 +42,31 @@ function HeroTextRotation() {
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % heroTexts.length);
         setIsVisible(true);
-      }, 300);
-    }, 2500);
+      }, 400);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight transition-all duration-300 ${
-      isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'
-    }`}>
-      {heroTexts[currentIndex]}
-    </h1>
+    <div className="mb-8">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Let HeyWay call for you —
+      </h1>
+      <div className="bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-6 max-w-3xl mx-auto">
+        <div className="flex items-center space-x-3 mb-4">
+          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+        </div>
+        <div className={`text-gray-200 text-lg sm:text-xl font-medium min-h-[28px] transition-all duration-400 ${
+          isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
+        }`}>
+          "{heroTexts[currentIndex]}"
+          <span className="animate-pulse">|</span>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -195,7 +215,7 @@ function App() {
 
           {/* Subtext */}
           <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-            No stress. No awkward calls. Just results.
+            Just type a prompt. No stress. No awkward calls. Just results.
           </p>
 
           {/* CTA Button */}
