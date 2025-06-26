@@ -285,8 +285,7 @@ function App() {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Your AI assistant that makes phone calls on your behalf using advanced AI. 
-            Recipients think it's you calling from your own number.
+            
           </p>
           
           <div className="mb-16">
