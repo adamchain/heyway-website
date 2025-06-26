@@ -50,19 +50,14 @@ function HeroTextRotation() {
 
   return (
     <div className="mb-8">
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
         Let HeyWay call for you —
       </h1>
-      <div className="bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-6 max-w-3xl mx-auto">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-        </div>
-        <div className={`text-gray-200 text-lg sm:text-xl font-medium min-h-[28px] transition-all duration-400 ${
+      <div className="bg-white rounded-xl shadow-lg p-6 max-w-3xl mx-auto">
+        <div className={`text-gray-800 text-lg sm:text-xl font-medium min-h-[28px] transition-all duration-400 ${
           isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
         }`}>
-          "{heroTexts[currentIndex]}"
+          {heroTexts[currentIndex]}
           <span className="animate-pulse">|</span>
         </div>
       </div>
@@ -76,7 +71,7 @@ function PhoneMockup({ screenshot, isActive }: { screenshot: string; isActive: b
       isActive ? 'opacity-100 scale-100' : 'opacity-60 scale-95'
     }`}>
       {/* Phone Frame */}
-      <div className="bg-gray-900 rounded-[3rem] p-2 shadow-2xl">
+      <div className="bg-gray-800 rounded-[3rem] p-2 shadow-2xl">
         <div className="bg-black rounded-[2.5rem] p-1">
           <div className="bg-white rounded-[2rem] overflow-hidden">
             {/* Status Bar */}
@@ -118,16 +113,16 @@ function FeaturesSection() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-20 px-4 sm:px-6 lg:px-8">
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
           {/* Features List */}
           <div className="space-y-8">
             <div className="mb-12">
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
                 How it works
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-xl text-gray-300">
                 Three simple steps to never make another awkward call again.
               </p>
             </div>
@@ -138,25 +133,25 @@ function FeaturesSection() {
                   key={index}
                   className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
                     activeFeature === index
-                      ? 'bg-white shadow-lg border-2 border-blue-200 transform scale-105'
-                      : 'bg-white/50 hover:bg-white/80 border-2 border-transparent'
+                      ? 'bg-gray-800 shadow-lg border-2 border-blue-400 transform scale-105'
+                      : 'bg-gray-800/50 hover:bg-gray-800/80 border-2 border-transparent'
                   }`}
                   onClick={() => setActiveFeature(index)}
                 >
                   <div className="flex items-start space-x-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-colors duration-300 ${
-                      activeFeature === index ? 'bg-blue-500' : 'bg-gray-400'
+                      activeFeature === index ? 'bg-blue-500' : 'bg-gray-600'
                     }`}>
                       {index + 1}
                     </div>
                     <div className="flex-1">
                       <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
-                        activeFeature === index ? 'text-gray-900' : 'text-gray-700'
+                        activeFeature === index ? 'text-white' : 'text-gray-300'
                       }`}>
                         {feature.title}
                       </h3>
                       <p className={`transition-colors duration-300 ${
-                        activeFeature === index ? 'text-gray-600' : 'text-gray-500'
+                        activeFeature === index ? 'text-gray-300' : 'text-gray-400'
                       }`}>
                         {feature.description}
                       </p>
@@ -198,23 +193,23 @@ function FeaturesSection() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <section className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
           <div className="flex items-center justify-center space-x-3 mb-12">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
               <Phone className="w-7 h-7 text-white" />
             </div>
-            <span className="text-3xl font-bold text-gray-900">HeyWay</span>
+            <span className="text-3xl font-bold text-white">HeyWay</span>
           </div>
 
           {/* Rotating Hero Text */}
           <HeroTextRotation />
 
           {/* Subtext */}
-          <p className="text-xl sm:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
             Just type a prompt. No stress. No awkward calls. Just results.
           </p>
 
@@ -226,7 +221,7 @@ function App() {
               <ArrowRight className="ml-3 h-6 w-6" />
             </button>
             
-            <button className="inline-flex items-center px-10 py-5 border-2 border-gray-300 text-gray-700 text-xl font-semibold rounded-2xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-200">
+            <button className="inline-flex items-center px-10 py-5 border-2 border-gray-600 text-gray-300 text-xl font-semibold rounded-2xl hover:border-gray-500 hover:bg-gray-800 transition-all duration-200">
               <MessageSquare className="w-6 h-6 mr-3" />
               Join Waitlist
             </button>
@@ -234,8 +229,8 @@ function App() {
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+            <div className="w-6 h-10 border-2 border-gray-500 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-gray-500 rounded-full mt-2 animate-pulse"></div>
             </div>
           </div>
         </div>
