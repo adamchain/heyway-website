@@ -133,14 +133,14 @@ function FeaturesSection() {
                   key={index}
                   className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
                     activeFeature === index
-                      ? 'bg-gray-800 shadow-lg border-2 border-blue-400 transform scale-105'
+                      ? 'bg-gray-800 shadow-lg border-2 border-green-600 transform scale-105'
                       : 'bg-gray-800/50 hover:bg-gray-800/80 border-2 border-transparent'
                   }`}
                   onClick={() => setActiveFeature(index)}
                 >
                   <div className="flex items-start space-x-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold transition-colors duration-300 ${
-                      activeFeature === index ? 'bg-blue-500' : 'bg-gray-600'
+                      activeFeature === index ? 'bg-green-600' : 'bg-gray-600'
                     }`}>
                       {index + 1}
                     </div>
@@ -162,7 +162,7 @@ function FeaturesSection() {
             </div>
 
             <div className="pt-8">
-              <button className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-lg font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+              <button className="inline-flex items-center px-8 py-4 bg-green-600 text-white text-lg font-semibold rounded-2xl hover:bg-green-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
                 <Download className="w-5 h-5 mr-2" />
                 Try HeyWay
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -199,7 +199,7 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
           <div className="flex items-center justify-center space-x-3 mb-12">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-green-600 rounded-2xl flex items-center justify-center">
               <Phone className="w-7 h-7 text-white" />
             </div>
             <span className="text-3xl font-bold text-white">HeyWay</span>
@@ -215,7 +215,7 @@ function App() {
 
           {/* CTA Button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xl font-semibold rounded-2xl hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+            <button className="inline-flex items-center px-10 py-5 bg-green-600 text-white text-xl font-semibold rounded-2xl hover:bg-green-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
               <Zap className="w-6 h-6 mr-3" />
               Try HeyWay
               <ArrowRight className="ml-3 h-6 w-6" />
