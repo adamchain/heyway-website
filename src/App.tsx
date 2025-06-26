@@ -16,7 +16,7 @@ function TypingAnimation() {
 
   useEffect(() => {
     const prompt = prompts[currentPrompt];
-    
+
     if (isTyping) {
       if (currentText.length < prompt.length) {
         const timer = setTimeout(() => {
@@ -44,13 +44,13 @@ function TypingAnimation() {
 
   return (
     <div className="relative">
-      <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 max-w-2xl mx-auto">
+      <div className="bg-gray-800 rounded-xl shadow-lg border border-gray-700 p-6 max-w-2xl mx-auto">
         <div className="flex items-center space-x-3 mb-4">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-gray-700 text-lg font-medium min-h-[28px]">
+        <div className="text-gray-200 text-lg font-medium min-h-[28px]">
           {currentText}
           <span className="animate-pulse">|</span>
         </div>
@@ -75,14 +75,14 @@ function iPhonePlaceholder() {
                 <div className="w-6 h-3 bg-green-500 rounded-sm"></div>
               </div>
             </div>
-            
+
             {/* App Interface Placeholder */}
-            <div className="bg-gradient-to-b from-gray-50 to-white p-8 text-center min-h-[500px] flex flex-col justify-center">
+            <div className="bg-gradient-to-b from-gray-800 to-gray-700 p-8 text-center min-h-[500px] flex flex-col justify-center">
               <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-green-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                 <Phone className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">HeyWay</h3>
-              <p className="text-gray-600">AI Assistant</p>
+              <h3 className="text-xl font-semibold text-white mb-2">HeyWay</h3>
+              <p className="text-gray-300">AI Assistant</p>
             </div>
           </div>
         </div>
@@ -93,14 +93,14 @@ function iPhonePlaceholder() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <nav className="bg-gray-900/80 backdrop-blur-md border-b border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <Phone className="h-8 w-8 text-green-600" />
-              <span className="text-2xl font-bold text-gray-900">HeyWay</span>
+              <Phone className="h-8 w-8 text-green-400" />
+              <span className="text-2xl font-bold text-white">HeyWay</span>
             </div>
             <button className="hidden sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors">
               <Download className="w-4 h-4 mr-2" />
@@ -113,16 +113,16 @@ function App() {
       {/* Hero Section */}
       <section className="pt-20 pb-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
             Let HeyWay call for you —{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-green-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-400 to-green-400 bg-clip-text text-transparent">
               Just type a prompt.
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            
+          <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+
           </p>
-          
+
           <div className="mb-16">
             <TypingAnimation />
           </div>
@@ -133,7 +133,7 @@ function App() {
               Download for iOS
               <ArrowRight className="ml-2 h-5 w-5" />
             </button>
-            <button className="inline-flex items-center px-8 py-4 border border-gray-300 text-lg font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors">
+            <button className="inline-flex items-center px-8 py-4 border border-gray-600 text-lg font-medium rounded-xl text-gray-200 bg-gray-800 hover:bg-gray-700 transition-colors">
               Watch Demo
             </button>
           </div>
@@ -141,180 +141,111 @@ function App() {
       </section>
 
       {/* Choose Your AI Voice Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Choose Your AI Voice</h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Pick from 23 stunningly realistic voices—male, female, energetic, calm, or professional. 
-                Make the AI sound like you… or better.
+              <h2 className="text-4xl font-bold text-white mb-6">Choose Your Voice</h2>
+              <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+                Pick from 23 human-like voices, each with its own personality.
               </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">23 ultra-realistic voice options</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">Male and female voices available</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">Professional, energetic, and calm tones</span>
-                </div>
-              </div>
+
             </div>
-            
-            <div>
-              {iPhonePlaceholder()}
+
+            <div className="max-w-sm mx-auto lg:mx-0">
+              <img
+                src="/screenshots/voice.png"
+                alt="Voice selection interface"
+                className="w-full h-auto rounded-xl shadow-lg"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Caller ID Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0a0c]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-1 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Your Caller ID, Your Number</h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                All calls go out from your real number—so when someone picks up, they see you calling, 
-                not some unknown spam number. Build trust from the first ring.
+              <h2 className="text-4xl font-bold text-white mb-6">Your Caller ID, Your Number</h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                All calls go out from your actual number—so when someone gets a call, they see you calling.
               </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">Your name appears on caller ID</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">No suspicious unknown numbers</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Check className="w-4 h-4 text-green-600" />
-                  </div>
-                  <span className="text-gray-700">Higher answer rates guaranteed</span>
-                </div>
-              </div>
+
             </div>
-            
-            <div className="order-1 lg:order-2">
-              {iPhonePlaceholder()}
-            </div>
+
           </div>
         </div>
       </section>
 
       {/* Business Search Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              {iPhonePlaceholder()}
+            <div className="max-w-sm mx-auto lg:mx-0">
+              <img
+                src="/screenshots/biz.png"
+                alt="Voice selection interface"
+                className="w-full h-auto rounded-xl shadow-lg"
+              />
             </div>
-            
+
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Call Any Business, Anywhere</h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                HeyWay lets you search for businesses like 'vets near me' or 'local barber' and instantly 
+              <h2 className="text-4xl font-bold text-white mb-6">Call Any Business, Anywhere</h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                HeyWay lets you search for businesses like 'vets near me' or 'local barber' and instantly
                 call with your AI assistant. No more looking up phone numbers or navigating phone trees.
               </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <Search className="w-5 h-5 text-indigo-600" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Smart Business Search</h4>
-                    <p className="text-gray-600">Find restaurants, services, and shops with natural language queries</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <MapPin className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Location-Based Results</h4>
-                    <p className="text-gray-600">Get businesses near you with hours, ratings, and contact info</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <Phone className="w-5 h-5 text-purple-600" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">One-Click Calling</h4>
-                    <p className="text-gray-600">Skip the hassle—HeyWay calls and handles the conversation</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Call Transcripts Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Complete Call Transcripts</h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Get detailed transcripts of every conversation with key outcomes highlighted. 
+              <h2 className="text-4xl font-bold text-white mb-6">Complete Call Transcripts</h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Get detailed transcripts of every conversation with key outcomes highlighted.
                 Never miss important details or forget what was discussed.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <FileText className="w-5 h-5 text-indigo-600" />
+                  <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <FileText className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Full Transcripts</h4>
-                    <p className="text-gray-600">Complete word-for-word conversation records</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">Full Transcripts</h4>
+                    <p className="text-gray-300">Complete word-for-word conversation records</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <Check className="w-5 h-5 text-green-600" />
+                  <div className="w-10 h-10 bg-green-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <Check className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Key Outcomes</h4>
-                    <p className="text-gray-600">Important decisions and next steps highlighted</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">Key Outcomes</h4>
+                    <p className="text-gray-300">Important decisions and next steps highlighted</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                    <Clock className="w-5 h-5 text-purple-600" />
+                  <div className="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                    <Clock className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Instant Delivery</h4>
-                    <p className="text-gray-600">Transcripts delivered within seconds of call ending</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">Instant Delivery</h4>
+                    <p className="text-gray-300">Transcripts delivered within seconds of call ending</p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div>
               {iPhonePlaceholder()}
             </div>
@@ -330,23 +261,23 @@ function App() {
               Ready to let AI handle your calls?
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Join thousands of users who've already saved hours of their time with HeyWay. 
+              Join thousands of users who've already saved hours of their time with HeyWay.
               Download now and get your first 3 calls free.
             </p>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <button className="inline-flex items-center px-8 py-4 bg-white text-black text-lg font-semibold rounded-2xl hover:bg-gray-100 transition-all duration-200 transform hover:scale-105 shadow-lg">
               <Download className="w-6 h-6 mr-3" />
               Download for iPhone
             </button>
-            
+
             <button className="inline-flex items-center px-8 py-4 border-2 border-white text-white text-lg font-semibold rounded-2xl hover:bg-white hover:text-black transition-all duration-200">
               <MessageSquare className="w-6 h-6 mr-3" />
               Join Waitlist
             </button>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center">
             <div>
               <div className="text-3xl font-bold text-green-400 mb-2">10,000+</div>
