@@ -268,7 +268,8 @@ function App() {
               <span className="text-2xl font-bold text-gray-900">HeyWay</span>
             </div>
             <button className="hidden sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors">
-              Get Early Access
+              <Download className="w-4 h-4 mr-2" />
+              Download for iOS
             </button>
           </div>
         </div>
@@ -294,7 +295,8 @@ function App() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-green-600 hover:bg-green-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
-              Get Early Access
+              <Download className="w-5 h-5 mr-2" />
+              Download for iOS
               <ArrowRight className="ml-2 h-5 w-5" />
             </button>
             <button className="inline-flex items-center px-8 py-4 border border-gray-300 text-lg font-medium rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors">
